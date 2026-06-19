@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Manrope:wght@200..800&display=swap");
 header {
-  background-color: var(--primary-color);
+  background-color: #a7e4ea;
 }
 
 .site-header {
@@ -32,8 +32,8 @@ header {
 }
 
 footer {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
+  background-color: #4d537d;
+  color: #fafafa;
 }
 
 .site-footer {
