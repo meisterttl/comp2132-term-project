@@ -15,10 +15,6 @@ class Game {
     this.#guesses.push(input);
   }
 
-  #getLetters() {
-    return this.#wordSpread;
-  }
-
   #lettersLeft(number) {
     this.#length = this.#length - number;
   }
@@ -51,6 +47,10 @@ class Game {
     return this.#length;
   }
 
+  getLetters() {
+    return this.#wordSpread;
+  }
+
   getWord() {
     return this.#word;
   }
@@ -65,7 +65,7 @@ class Game {
         const lifeLeft = this.lifeLeft();
 
         if (0 !== lifeLeft) {
-          const letters = this.#getLetters();
+          const letters = this.getLetters();
           const found = letters
             .map((item, idx) => {
               return item === letter ? idx : undefined;

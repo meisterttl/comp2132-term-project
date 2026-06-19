@@ -42,18 +42,31 @@ function disableAllBtns() {
   btns.forEach((btn) => (btn.disabled = true));
 }
 
-async function gameStart() {
-  gameStarted = true;
+function fillBoxes() {
+  const letterBoxes = guessesEl.querySelectorAll(".letter-box");
+  const letters = game.getLetters();
 
+  letterBoxes.forEach((box, idx) => {
+    box.classList.add("fail");
+
+    if (!box.classList.contains("filled")) {
+      box.textContent = letters[idx];
+    }
+  });
+}
+
+async function gameStart() {
   await chooseWord()
     .then((data) => {
       game = new Game(data);
-      console.log(game.getWord());
+
       populateGuessess();
       updateHangman(0);
+      console.log(game.getWord());
     })
     .catch((err) => console.log(err));
 
+  gameStarted = true;
   keyboardEl.append(...buttons);
   startBtn.parentElement.remove();
 }
@@ -80,7 +93,10 @@ function handleGuesses(id) {
         lifeLeft = game.lifeLeft();
 
         updateHangman(lifeTotal - lifeLeft);
-        if (0 === lifeLeft) disableAllBtns(); // LOSE
+        if (0 === lifeLeft) {
+          disableAllBtns(); // LOSE
+          fillBoxes();
+        }
       }
     }
   }

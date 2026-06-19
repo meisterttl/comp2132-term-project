@@ -318,13 +318,16 @@ main .columns section > *:not(:last-child) {
   margin-right: 1rem;
 }
 .letter-box.filled {
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #0b6623;
+}
+.letter-box.fail:not(.filled) {
+  border-bottom: 2px solid #7c0a02;
 }
 
 .word-wrapper {
   display: flex;
   flex: 0 0 auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .word-wrapper:not(:last-child) {
   margin-right: 1rem;
@@ -336,11 +339,27 @@ main .columns section > *:not(:last-child) {
   min-height: 100%;
 }
 
+#display figure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#display-control {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 #guesses {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 auto;
+  flex: 1 1 100%;
+}
+
+#keyboard {
+  max-width: calc((40px + 0.5rem) * 9);
 }
 
 /*# sourceMappingURL=style.css.map */

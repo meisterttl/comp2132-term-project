@@ -1,14 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Manrope:wght@200..800&display=swap");
-
 @import "partials/variables";
 @import "partials/functions";
 @import "partials/mixins";
 
 @import "partials/header.scss";
 @import "partials/footer.scss";
-
-$header-font: "Cormorant", serif;
-$main-font: "Manrope", sans-serif;
 
 *,
 *:before,
@@ -299,8 +294,8 @@ main {
     margin-bottom: 0.5rem;
     padding: 0;
 
-    width: 40px;
-    height: 40px;
+    width: $button-size;
+    height: $button-size;
 
     box-shadow: 2px -2px $gray;
 
@@ -333,13 +328,13 @@ main {
 .letter-box {
   display: inline-block;
 
-  width: 40px;
-  height: 40px;
+  width: $button-size;
+  height: $button-size;
 
   border-bottom: 2px solid $secondary-color;
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 40px;
+  line-height: $button-size;
   text-align: center;
   text-transform: uppercase;
 
@@ -348,14 +343,23 @@ main {
   }
 
   &.filled {
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid $green;
+  }
+
+  &.fail {
+    // border-bottom: 2px solid $secondary-color;
+
+    &:not(.filled) {
+      border-bottom: 2px solid $error-color;
+      // color: $error-color;
+    }
   }
 }
 
 .word-wrapper {
   display: flex;
   flex: 0 0 auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   &:not(:last-child) {
     margin-right: 1rem;
@@ -369,9 +373,27 @@ main {
   min-height: 100%;
 }
 
+#display {
+  figure {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+#display-control {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 #guesses {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 auto;
+  flex: 1 1 100%;
+}
+
+#keyboard {
+  max-width: calc(($button-size + 0.5rem) * 9);
 }
