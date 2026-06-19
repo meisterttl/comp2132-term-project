@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Manrope:wght@200..800&display=swap");
+header {
+  background-color: var(--primary-color);
+}
+
+.site-header {
+  padding: 2rem 0;
+  text-align: left;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+.site-header .columns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  margin-right: 1rem;
+}
+
+.site-logo img {
+  width: 100px;
+}
+
+.site-heading {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+footer {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+}
+
+.site-footer {
+  padding: 2rem 0;
+  text-align: left;
+}
+
+.site-footer p {
+  text-align: left;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa;
+  color: #0d0907;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cormorant", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+@media screen and (min-width: 75em) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+}
+@media screen and (min-width: 75em) {
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+@media screen and (min-width: 75em) {
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+p {
+  text-align: justify;
+}
+@media screen and (min-width: 75em) {
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  ul {
+    font-size: 1.1rem;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+main {
+  padding: 2rem 0;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+@media screen and (min-width: 75em) {
+  main {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+main figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+}
+main section:not(:last-child) {
+  margin-bottom: 2rem;
+}
+main .columns > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 45em) {
+  main .columns > *:not(:last-child) .row > .columns:last-child {
+    margin-bottom: 2rem;
+  }
+}
+main .columns section {
+  margin-bottom: 0;
+  padding: 1rem;
+  height: 100%;
+  border: 2px solid #c0cad6;
+}
+main .columns section section {
+  padding: 0;
+  height: auto;
+  border: none;
+}
+main .columns section > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 75rem;
+}
+.container.full-width {
+  max-width: none;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  max-width: none;
+}
+.row > .columns:last-child {
+  margin-bottom: 0;
+}
+
+.columns {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  flex-basis: 100%;
+}
+@media screen and (min-width: 45em) {
+  .columns {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 45em) {
+  .columns-2 {
+    flex-basis: 50%;
+  }
+}
+
+.content a {
+  color: #4d537d;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  transition: color 0.2s;
+}
+.content a:hover {
+  color: #000000;
+}
+@media screen and (min-width: 75em) {
+  .content .image-wrapper {
+    margin-left: -15rem;
+    margin-right: -15rem;
+    max-width: none;
+  }
+}
+.content .font-bold {
+  font-weight: 700;
+}
+.content .sub-content:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.sub-content > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.sub-content img {
+  display: inline-block;
+  max-width: 100px;
+}
+.sub-content img.card {
+  display: block;
+  border: 2px solid #4d537d;
+  border-radius: 6px;
+}
+
+.lead {
+  font-family: "Cormorant", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.lead.large {
+  font-size: 1.5rem;
+}
+.lead .icon {
+  height: 100%;
+  fill: #0d0907;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #4d537d;
+  border: none;
+  color: #ebeff3;
+  line-height: 1.5;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
+}
+.button:hover {
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+}
+.button.active {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex: 1 1 100%;
+}
+.button-group > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+.button-group .button {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

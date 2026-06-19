@@ -1,0 +1,33 @@
+header {
+  background-color: var(--primary-color);
+}
+
+.site-header {
+  padding: 2rem 0;
+
+  text-align: left;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+.site-header .columns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  margin-right: 1rem;
+}
+
+.site-logo img {
+  width: 100px;
+}
+
+.site-heading {
+  flex: 1 1 auto;
+
+  text-align: left;
+}

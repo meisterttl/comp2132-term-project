@@ -1,0 +1,11 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "The hangman JavaScript weeb application game",
+  "type": "module",
+  "scripts": {
+    "sass": "sass --watch src/scss/styles.scss src/styles/style.css --silence-deprecation=import"
+  },
+  "author": "",
+  "license": "ISC"
+}
