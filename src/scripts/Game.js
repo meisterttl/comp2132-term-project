@@ -1,5 +1,7 @@
 class Game {
   #word;
+  #wordSpread;
+  #length;
   #lives;
   #guesses;
 
@@ -9,54 +11,89 @@ class Game {
     this.#guesses = [];
   }
 
-  guess(letter) {
-    const guesses = this.guessList();
-
-    if (!guesses.includes(letter)) {
-      const lifeLeft = this.remainingLives();
-
-      if (0 !== lifeLeft) {
-        const letters = this.getWord()
-          .split("")
-          .filter((letter) => " " !== letter);
-        const found = letters
-          .map((item, idx) => {
-            return item === letter ? idx : undefined;
-          })
-          .filter((item) => undefined !== item);
-
-        if (0 === found.length) this.#loseLife();
-        this.#addGuess(letter);
-      }
-    } else {
-      console.log("This letter has been already used!");
-    }
-  }
-
   #addGuess(input) {
     this.#guesses.push(input);
+  }
+
+  #getLetters() {
+    return this.#wordSpread;
+  }
+
+  #lettersLeft(number) {
+    this.#length = this.#length - number;
   }
 
   #loseLife() {
     this.#lives--;
   }
 
+  #reset() {
+    this.#word = "";
+    this.#wordSpread = [];
+    this.#length = 0;
+    this.#lives = 6;
+    this.#guesses = [];
+  }
+
   #setWord(input) {
-    this.#word =
+    const word =
       "string" === typeof input && "" !== input
         ? input
         : "hippopotomonstrosesquippedaliophobia";
+    const letters = word.split("").filter((letter) => " " !== letter);
+
+    this.#word = word;
+    this.#wordSpread = letters;
+    this.#length = letters.length;
+  }
+
+  getLength() {
+    return this.#length;
   }
 
   getWord() {
     return this.#word;
   }
 
+  guess(letter) {
+    const lettersLeft = this.getLength();
+
+    if (0 !== lettersLeft) {
+      const guesses = this.guessList();
+
+      if (!guesses.includes(letter)) {
+        const lifeLeft = this.lifeLeft();
+
+        if (0 !== lifeLeft) {
+          const letters = this.#getLetters();
+          const found = letters
+            .map((item, idx) => {
+              return item === letter ? idx : undefined;
+            })
+            .filter((item) => undefined !== item);
+
+          this.#addGuess(letter);
+          if (0 === found.length) this.#loseLife();
+          else this.#lettersLeft(found.length);
+
+          console.log(found);
+          console.log(this.#guesses, this.#lives, this.#length);
+
+          return found;
+        }
+      } else {
+        console.log("This letter has been already used!");
+      }
+    }
+
+    return null;
+  }
+
   guessList() {
     return this.#guesses;
   }
 
-  remainingLives() {
+  lifeLeft() {
     return this.#lives;
   }
 }

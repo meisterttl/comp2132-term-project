@@ -251,22 +251,6 @@ main {
   }
 }
 
-.lead {
-  font-family: $header-font;
-  font-size: 1.2rem;
-  font-weight: 700;
-
-  &.large {
-    font-size: 1.5rem;
-  }
-
-  .icon {
-    height: 100%;
-
-    fill: $text-color;
-  }
-}
-
 .button {
   padding: 0.5rem 1rem;
 
@@ -279,15 +263,22 @@ main {
     background-color 0.2s,
     color 0.2s;
 
-  &:hover {
-    background-color: $black;
-    color: $white;
-    cursor: pointer;
+  &:disabled {
+    background-color: $gray;
   }
 
-  &.active {
-    background-color: $black;
-    color: $white;
+  &:not(:disabled) {
+    &:hover {
+      background-color: $black;
+      color: $white;
+      cursor: pointer;
+    }
+
+    &:active,
+    &.active {
+      background-color: $black;
+      color: $white;
+    }
   }
 }
 
@@ -310,6 +301,64 @@ main {
 
     width: 40px;
     height: 40px;
+
+    box-shadow: 2px -2px $gray;
+
+    &:not(:disabled) {
+      &:active,
+      &.active {
+        box-shadow: 1px -1px $gray;
+        transform: translate(1px, -1px);
+      }
+    }
+  }
+}
+
+.lead {
+  font-family: $header-font;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  &.large {
+    font-size: 1.5rem;
+  }
+
+  .icon {
+    height: 100%;
+
+    fill: $text-color;
+  }
+}
+
+.letter-box {
+  display: inline-block;
+
+  width: 40px;
+  height: 40px;
+
+  border-bottom: 2px solid $secondary-color;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:not(last-child) {
+    margin-right: 1rem;
+  }
+
+  &.filled {
+    border-bottom: 2px solid transparent;
+  }
+}
+
+.word-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  margin-bottom: 1rem;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
   }
 }
 
@@ -318,4 +367,11 @@ main {
   flex-direction: column;
 
   min-height: 100%;
+}
+
+#guesses {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
 }
