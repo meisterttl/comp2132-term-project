@@ -401,7 +401,7 @@ main {
   opacity: 1;
   transition:
     opacity 0.2s,
-    z-index 0.2s 0.2s;
+    z-index 0s;
 
   > * {
     flex: 1 1 100%;
@@ -413,6 +413,13 @@ main {
     z-index: -1;
 
     opacity: 0;
+    transition:
+      opacity 0.2s,
+      z-index 0.2s 0.2s;
+  }
+
+  p {
+    white-space: pre-line;
   }
 }
 

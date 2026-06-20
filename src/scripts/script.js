@@ -51,7 +51,7 @@ function createReplayBtn() {
     id: "replay",
     className: "button large",
   });
-  replayBtn.textContent = "Replay";
+  replayBtn.textContent = "Play Again";
   replayBtn.setAttribute("type", "button");
   replayBtn.addEventListener("click", handleReplay);
 
@@ -93,22 +93,26 @@ async function gameStart() {
 }
 
 function gameOver(state) {
-  const confetti = overlayEl.querySelector(".confetti-wrapper");
+  let confetti = overlayEl.querySelector(".confetti-wrapper");
+  const menuTextEl = overlayEl.querySelector("p");
+
   gameStarted = false;
   removeKeyboard();
   createReplayBtn();
 
   if ("win" === state) {
-    if (!confetti) generateConfetti();
+    if (!confetti) confetti = generateConfetti();
 
-    gameScreenEl.classList.add("game-win");
-    overlayEl.classList.remove("hidden");
-    overlayEl.querySelector("p").textContent = "You Win!";
-    overlayEl.querySelector(".confetti-wrapper").classList.remove("hidden");
+    confetti.classList.remove("hidden");
+    menuTextEl.textContent = "You Win! 😁";
   } else if ("lose" === state) {
     fillBoxes();
-    gameScreenEl.classList.add("game-lose");
+
+    menuTextEl.textContent = `You Lose! 😵\r\n`;
+    menuTextEl.textContent += ` (Answer: ${game.getWord()})`;
   }
+
+  overlayEl.classList.remove("hidden");
 }
 
 async function gameReplay() {
@@ -142,6 +146,8 @@ function generateConfetti() {
   }
 
   overlayEl.append(confettiWrapper);
+
+  return confettiWrapper;
 }
 
 function handleGuesses(id) {
@@ -182,7 +188,7 @@ function handleReplay(e) {
   const replayBtnWrapper = e.currentTarget.parentElement;
   const confetti = overlayEl.querySelector(".confetti-wrapper");
 
-  confetti.classList.add("hidden");
+  if (confetti) confetti.classList.add("hidden");
   replayBtnWrapper.remove();
 
   gameStarted = true;

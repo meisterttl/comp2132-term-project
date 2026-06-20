@@ -2,6 +2,7 @@ class Game {
   #word;
   #wordSpread;
   #length;
+  #hint;
   #lives;
   #guesses;
 
@@ -25,14 +26,23 @@ class Game {
 
   #setWord(input) {
     const word =
-      "string" === typeof input && "" !== input
-        ? input
+      "string" === typeof input.word && "" !== input.word.trim()
+        ? input.word
         : "hippopotomonstrosesquippedaliophobia";
     const letters = word.split("").filter((letter) => " " !== letter);
+    const hint =
+      "string" === typeof input.hint && "" !== input.hint.trim()
+        ? input.hint
+        : "The phobia or fear of long words";
 
     this.#word = word;
     this.#wordSpread = letters;
     this.#length = letters.length;
+    this.#hint = hint;
+  }
+
+  getHint() {
+    return this.#hint;
   }
 
   getLength() {
@@ -67,9 +77,6 @@ class Game {
           this.#addGuess(letter);
           if (0 === found.length) this.#loseLife();
           else this.#lettersLeft(found.length);
-
-          console.log(found);
-          console.log(this.#guesses, this.#lives, this.#length);
 
           return found;
         }
