@@ -23,14 +23,6 @@ class Game {
     this.#lives--;
   }
 
-  #reset() {
-    this.#word = "";
-    this.#wordSpread = [];
-    this.#length = 0;
-    this.#lives = 6;
-    this.#guesses = [];
-  }
-
   #setWord(input) {
     const word =
       "string" === typeof input && "" !== input
@@ -95,6 +87,12 @@ class Game {
 
   lifeLeft() {
     return this.#lives;
+  }
+
+  reset(word) {
+    this.#setWord(word);
+    this.#lives = 6;
+    this.#guesses.length = 0;
   }
 }
 

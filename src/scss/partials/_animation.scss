@@ -1,0 +1,25 @@
+.wrong-guess {
+  animation-name: screen-shake;
+  animation-duration: 0.1s;
+  animation-timing-function: linear;
+  animation-direction: normal;
+  animation-iteration-count: 2;
+}
+
+@keyframes screen-shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(6px);
+  }
+  50% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

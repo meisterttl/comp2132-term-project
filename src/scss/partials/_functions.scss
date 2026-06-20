@@ -1,6 +1,38 @@
+@use "sass:list";
 @use "sass:math";
+@use "sass:string";
 
 @function rem-calc($size) {
   $remSize: math.div($size, 16);
   @return #{$remSize}rem;
+}
+
+/*
+CSS Only Confetti effect
+https://codepen.io/fionnachan/pen/EvaqOB
+*/
+
+@for $i from 0 through 150 {
+  $w: math.random(8);
+  $l: math.random(100);
+  .confetti-#{$i} {
+    width: #{$w}px;
+    height: #{$w * 0.4}px;
+    background-color: list.nth($confetti-colors, math.random(3));
+    top: -10%;
+    left: string.unquote($l + "%");
+    opacity: math.random() + 0.5;
+    transform: rotate(#{math.random() * 360}deg);
+    animation: drop-#{$i}
+      string.unquote(4 + math.random() + "s")
+      string.unquote(math.random() + "s")
+      infinite;
+  }
+
+  @keyframes drop-#{$i} {
+    100% {
+      top: 110%;
+      left: string.unquote($l + math.random(15) + "%");
+    }
+  }
 }
