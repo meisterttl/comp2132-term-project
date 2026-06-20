@@ -6,6 +6,8 @@ import { alphabet } from "./constants";
 const gameScreenEl = document.querySelector("#game-screen");
 const displayEl = document.querySelector("#display");
 const guessesEl = document.querySelector("#guesses");
+const hintEl = document.querySelector("#hint");
+const detailsEl = hintEl.querySelector("details");
 const keyboardEl = document.querySelector("#keyboard");
 const overlayEl = document.querySelector(".overlay");
 
@@ -20,7 +22,7 @@ let game;
 
 // Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
-  startBtn.addEventListener("click", gameStart);
+  startBtn.addEventListener("click", handleStart);
 });
 
 window.addEventListener("keyup", keyUpEvent);
@@ -78,6 +80,7 @@ async function gameStart() {
 
       createKeyboard();
       populateGuessess();
+      hideHint();
       updateHangman(0);
       overlayEl.classList.add("hidden");
 
@@ -87,9 +90,6 @@ async function gameStart() {
       console.log(`Answer: ${game.getWord().toUpperCase()}`);
     })
     .catch((err) => console.log(err));
-
-  gameStarted = true;
-  startBtn.parentElement.remove();
 }
 
 function gameOver(state) {
@@ -113,6 +113,7 @@ function gameOver(state) {
   }
 
   overlayEl.classList.remove("hidden");
+  hintEl.classList.add("hidden");
 }
 
 async function gameReplay() {
@@ -123,6 +124,7 @@ async function gameReplay() {
       resetGuesses();
       createKeyboard();
       populateGuessess();
+      hideHint();
       updateHangman(0);
       overlayEl.classList.add("hidden");
 
@@ -188,13 +190,31 @@ function handleReplay(e) {
   const replayBtnWrapper = e.currentTarget.parentElement;
   const confetti = overlayEl.querySelector(".confetti-wrapper");
 
+  gameReplay();
+
   if (confetti) confetti.classList.add("hidden");
   replayBtnWrapper.remove();
 
   gameStarted = true;
   ignoreKeys.length = 0;
+  hintEl.classList.remove("hidden");
+}
 
-  gameReplay();
+function handleStart() {
+  gameStart();
+
+  gameStarted = true;
+  hintEl.classList.remove("hidden");
+  startBtn.parentElement.remove();
+}
+
+function hideHint() {
+  const hintDiv = hintEl.querySelector("div");
+  const hintContainer = hintDiv ? hintDiv : document.createElement("div");
+  hintContainer.textContent = game.getHint();
+
+  detailsEl.removeAttribute("open");
+  detailsEl.append(hintContainer);
 }
 
 function populateGuessess() {

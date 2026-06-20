@@ -27,12 +27,12 @@ class Game {
   #setWord(input) {
     const word =
       "string" === typeof input.word && "" !== input.word.trim()
-        ? input.word
+        ? input.word.trim()
         : "hippopotomonstrosesquippedaliophobia";
     const letters = word.split("").filter((letter) => " " !== letter);
     const hint =
       "string" === typeof input.hint && "" !== input.hint.trim()
-        ? input.hint
+        ? input.hint.trim()
         : "The phobia or fear of long words";
 
     this.#word = word;

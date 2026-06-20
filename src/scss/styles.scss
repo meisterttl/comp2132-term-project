@@ -287,20 +287,16 @@ main {
 }
 
 .button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  @include center-align(horizontal, $wrap: true);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   flex: 1 1 100%;
 
-  > *:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-
   .button {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     padding: 0;
 
     width: $button-size;
@@ -359,31 +355,34 @@ main {
 .letter-box {
   display: inline-block;
 
-  width: $button-size;
-  height: $button-size;
+  width: calc($button-size * 0.7);
+  height: calc($button-size * 0.7);
 
-  border-bottom: 2px solid $secondary-color;
-  font-size: 1.5rem;
+  border-bottom: 3px solid $secondary-color;
+  font-size: 1.1rem;
   font-weight: 700;
-  line-height: $button-size;
+  line-height: calc($button-size * 0.7);
   text-align: center;
   text-transform: uppercase;
 
-  &:not(last-child) {
+  @media screen and (min-width: 45em) {
+    width: $button-size;
+    height: $button-size;
+
+    font-size: 1.5rem;
+    line-height: $button-size;
+  }
+
+  &:not(:last-child) {
     margin-right: 1rem;
   }
 
-  &.filled {
-    border-bottom: 2px solid $green;
+  &.fail {
+    border-bottom: 3px solid $error-color;
   }
 
-  &.fail {
-    // border-bottom: 2px solid $secondary-color;
-
-    &:not(.filled) {
-      border-bottom: 2px solid $error-color;
-      // color: $error-color;
-    }
+  &.filled {
+    border-bottom: 3px solid $green;
   }
 }
 
@@ -429,12 +428,10 @@ main {
 
 .word-wrapper {
   display: flex;
-  flex: 0 0 auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   margin-bottom: 2rem;
-
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
+  flex: 0 0 auto;
 }
 
 #container {
@@ -446,25 +443,55 @@ main {
 
 #display {
   figure {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    @include center-align(horizontal, $wrap: true);
   }
 }
 
 #display-control {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  @include center-align(horizontal, $wrap: true);
 }
 
 #guesses {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center-align(both, $wrap: true);
   flex: 1 1 100%;
 }
 
 #keyboard {
-  max-width: calc(($button-size + 0.5rem) * 9);
+  max-width: calc(($button-size + 1rem) * 9);
+}
+
+#hint {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  flex: 1 1 100%;
+
+  &.hidden {
+    display: none;
+  }
+
+  details {
+    @include center-align(horizontal, $wrap: true);
+  }
+
+  div {
+    flex: 1 1 100%;
+
+    max-width: 30rem;
+  }
+
+  summary {
+    padding: 0.5rem;
+    flex: 1 1 100%;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $error-color;
+      cursor: pointer;
+    }
+  }
 }
