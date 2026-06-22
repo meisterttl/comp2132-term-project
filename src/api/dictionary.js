@@ -1,4 +1,4 @@
-import { randomize } from "../scripts/helpers";
+import { randomize } from "../scripts/helpers.js";
 
 export const chooseWord = async () => {
   const res = await fetch("./api/database.json");

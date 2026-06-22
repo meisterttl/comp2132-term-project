@@ -1,6 +1,6 @@
-import Game from "./Game";
-import { chooseWord } from "../api/dictionary";
-import { alphabet } from "./constants";
+import Game from "./Game.js";
+import { chooseWord } from "../api/dictionary.js";
+import { alphabet } from "./constants.js";
 
 // DOM Variables
 const gameScreenEl = document.querySelector("#game-screen");
