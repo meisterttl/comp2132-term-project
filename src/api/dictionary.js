@@ -1,7 +1,7 @@
 import { randomize } from "../scripts/helpers";
 
 export const chooseWord = async () => {
-  const res = await fetch("./api/database.json?vr=1.0");
+  const res = await fetch("./api/database.json");
   const data = await res.json();
 
   if (Array.isArray(data) && 0 !== data.length) {

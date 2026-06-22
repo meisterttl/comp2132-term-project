@@ -458,6 +458,11 @@ main {
 
 #keyboard {
   max-width: calc(($button-size + 1rem) * 9);
+
+  .button {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
 }
 
 #hint {
