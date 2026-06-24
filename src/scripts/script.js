@@ -109,7 +109,7 @@ function gameOver(state) {
     fillBoxes();
 
     menuTextEl.textContent = `You Lose! 😵\r\n`;
-    menuTextEl.textContent += ` (Answer: ${game.getWord()})`;
+    menuTextEl.textContent += `(Answer: ${game.getWord()})`;
   }
 
   overlayEl.classList.remove("hidden");
